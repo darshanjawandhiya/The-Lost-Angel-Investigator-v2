@@ -1,0 +1,90 @@
+<head>
+<style>
+    body{
+        font-family: 'Times New Roman', Times, serif;
+        align-items: center;
+    }
+    form{
+        width: 1000px;
+        margin: auto;
+    }
+    .det_title{
+        font-size: 50px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 5px;
+    }
+
+    .all{
+        margin-top: 20px;
+        text-align: left;
+        border: 2px solid black;
+    }
+    .det_name ,.det_add , .det_number{
+        font-size: 50px;
+        width: 1000px;
+        margin-left: 200px;
+        margin-bottom: 10px;
+    }
+    .det_image{
+        margin-right: 100px;
+    }
+    img {
+        max-width: 200px;
+        max-height: 200px;
+        display: block;
+        margin: 0 auto;
+    }
+    .label{
+        font-size: x-large;
+        font-weight: bold;
+    }
+    .flexi{
+        margin-left:  225px;
+        display: flex;
+    }
+</style>
+</head>
+<body>
+
+{% extends 'base.html' %}
+
+{% block content%}
+<form action = "#" method="POST" enctype = "multipart/form-data">
+    {% csrf_token %}
+    <div class = "all">
+    <div class ="det_title">Probable Match Found</div>
+    <br/>
+    <br/>
+    <br/>
+    <div class = "flexi">
+        <div class="det_image">
+            <img src = {{ path }}/>
+            <p class = "label">Detected Child Class</p>
+        </div>
+        <div class="det_image">
+            <img src = {{ path1 }}/>
+            <p class = "label" >Uploaded Image Child Class</p>
+        </div>
+    </div>
+    
+    <br/>
+    <br/>
+    <div class="det_name">
+       <b>Name :</b>  &emsp;&emsp;&emsp;{{ detected_person.name }}
+    </div>
+    <div class="det_add">
+        <b>Address :</b>  &emsp;&emsp;{{ detected_person.address}}
+    </div>
+    <div class="det_number">
+        <b>Mobile No.:</b>  &emsp;{{ detected_person.mobile_num }}
+    </div>
+    <div class ="det_number">
+        <b>Match (%) :</b>  &emsp;{{ confi}}
+    </div>
+</div>
+</form>
+{% endblock%}
+
+</body>
